@@ -32,6 +32,7 @@ public class Scene_0 : MonoBehaviour
 
     public void LoadLeaderBoardScene()
     {
+        DataHolder._sceneNumber = 0;
         SceneManager.LoadScene("LeaderBoard");
     }
 

@@ -13,4 +13,8 @@ public class Ball : MonoBehaviour
             return spriteRenderer.sprite == null ? true : false; 
         }
     }
+    public void DeletSprite()
+    {
+        gameObject.SetActive(false);
+    }
 }

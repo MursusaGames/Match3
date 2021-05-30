@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 797936162}
   - component: {fileID: 797936161}
   - component: {fileID: 797936160}
-  - component: {fileID: 797936163}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -349,23 +348,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &797936163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797936159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8337b3a11cca18843a7190b29ae0b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1544456409}
-  rowLeaderBoardPrefab: {fileID: 1405566068202079330, guid: b8ff3a7dbb1c427418df4d0d6f14f86c,
-    type: 3}
-  titleRowLeaderBoardPrefab: {fileID: 7611797550375299690, guid: 23e62cb27e47a074fbfc64d61af0eccd,
-    type: 3}
 --- !u!1 &890082678
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +539,7 @@ GameObject:
   - component: {fileID: 1544456413}
   - component: {fileID: 1544456412}
   - component: {fileID: 1544456411}
+  - component: {fileID: 1544456414}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -607,7 +590,7 @@ MonoBehaviour:
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleHeight: 1
 --- !u!114 &1544456412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +628,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544456409}
   m_CullTransparentMesh: 0
+--- !u!114 &1544456414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544456409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8337b3a11cca18843a7190b29ae0b9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1544456409}
+  rowLeaderBoardPrefab: {fileID: 1405566068202079330, guid: b8ff3a7dbb1c427418df4d0d6f14f86c,
+    type: 3}
+  titleRowLeaderBoardPrefab: {fileID: 7611797550375299690, guid: 23e62cb27e47a074fbfc64d61af0eccd,
+    type: 3}
+  csvFile: {fileID: 4900000, guid: ccbd4c42231bb2e44b45d1a7b6353500, type: 3}
 --- !u!1 &2033911248
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +728,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 797936163}
+      - m_Target: {fileID: 1544456414}
         m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:

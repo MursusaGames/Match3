@@ -14,6 +14,11 @@ public class Boards : MonoBehaviour
     private bool isShift = false;
     public bool isGamePlayed = false;
     private Ball[,] ballArray;
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] GameObject explosionPrefab;
+    GameObject tempBall;
+    
+   
     
     [SerializeField] GamePlay gamePlay;
 
@@ -30,6 +35,9 @@ public class Boards : MonoBehaviour
 
     private void Start()
     {
+        tempBall = Instantiate(ballPrefab);
+       
+        tempBall.SetActive(false);
         isGamePlayed = true;
         InvokeRepeating("SearchEmptyBalls", 0.1f, 0.1f);
     }
@@ -47,9 +55,15 @@ public class Boards : MonoBehaviour
                 PlayerPrefs.SetString("First", "OK");
             }
             RaycastHit2D ray = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
-            if (ray)
+            if (ray && ray.collider.gameObject.GetComponent<Ball>().spriteRenderer.sprite != null)
             {
+                tempBall.transform.position = ray.collider.gameObject.transform.position;
+                tempBall.GetComponent<SpriteRenderer>().sprite = ray.collider.gameObject.GetComponent<Ball>().spriteRenderer.sprite;
+
+                tempBall.SetActive(true);
+                tempBall.GetComponent<Animator>().SetTrigger("3");
                 ray.collider.gameObject.GetComponent<Ball>().spriteRenderer.sprite = null;
+                GetComponent<AudioSource>().Play();
                 gamePlay.MinusMoves();
                 
             }
@@ -84,6 +98,7 @@ public class Boards : MonoBehaviour
         {
             isFindMatch = false;
             ball.spriteRenderer.sprite = null;
+            Instantiate(explosionPrefab, ball.transform.position, Quaternion.identity);
             //isSearchEmptyBall = true;
         }
 
@@ -118,6 +133,8 @@ public class Boards : MonoBehaviour
             for (int i = 0; i < cachFindBalls.Count; i++)
             {
                 cachFindBalls[i].spriteRenderer.sprite = null;
+                
+                Instantiate(explosionPrefab, cachFindBalls[i].gameObject.transform.position, Quaternion.identity);
             }
             isFindMatch = true;
         }
@@ -125,6 +142,7 @@ public class Boards : MonoBehaviour
 
     private void SearchEmptyBalls()
     {
+        
         
         for(int x =0; x < xSize; x++)
         {

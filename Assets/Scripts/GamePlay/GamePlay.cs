@@ -77,7 +77,7 @@ public class GamePlay : MonoBehaviour
 
     void SetHiScore()
     {
-
+        DataHolder._sceneNumber = 1;
         SceneManager.LoadScene("LeaderBoard");
         
     }
@@ -87,20 +87,20 @@ public class GamePlay : MonoBehaviour
     {
         score += i;
         UpdateScore();
-        if (PlayerPrefs.HasKey("Match3_Score"))
+        if (PlayerPrefs.HasKey("Match3__Score"))
         {
-            hiScore = PlayerPrefs.GetInt("Match3_Score");
+            hiScore = PlayerPrefs.GetInt("Match3__Score");
             if(score > hiScore)
             {
                 isHiScore = true;
-                PlayerPrefs.SetInt("Match3_Score", score);
+                PlayerPrefs.SetInt("Match3__Score", score);
                 PlayerPrefs.SetString("Match3_Time", System.DateTime.Now.ToString());
             }
         }
         else
         {
             isHiScore = true;
-            PlayerPrefs.SetInt("Match3_Score", score);
+            PlayerPrefs.SetInt("Match3__Score", score);
             PlayerPrefs.SetString("Match3_Time", System.DateTime.Now.ToString());
         }
     }
@@ -133,7 +133,16 @@ public class GamePlay : MonoBehaviour
     {
         canvas.renderMode = RenderMode.ScreenSpaceCamera;
         Time.timeScale = 1;
-        SceneManager.LoadScene("Scene_0");
+        if (isHiScore)
+        {
+            DataHolder._sceneNumber = 1;
+            SceneManager.LoadScene("LeaderBoard");
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene_0");
+        }
+        
     }
     #endregion
 

@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CSVParsing.cs" />
+    <Compile Include="Assets\Scripts\DataHolder.cs" />
     <Compile Include="Assets\Scripts\ExitBtn.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ball.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Boards.cs" />
